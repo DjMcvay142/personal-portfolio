@@ -1,0 +1,46 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+}
+
+header {
+  top: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.nav-container {
+  max-width: 80%;
+  margin: 0 auto;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.25rem;
+}
+
+.nav-links ul {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  list-style: none;
+}
+
+.nav-links li {
+  font-weight: 400;
+  font-size: 1rem;
+  position: relative;
+}
