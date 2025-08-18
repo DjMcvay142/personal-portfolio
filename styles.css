@@ -5,6 +5,8 @@
 
 body {
   font-family: Montserrat, sans-serif;
+  background-color: #212730;
+  color: #fcfcfc;
 }
 
 header {
@@ -30,11 +32,15 @@ header {
 
 .nav-logo {
   font-size: 1.25rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
 }
 
 .nav-links ul {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 3rem;
   list-style: none;
 }
@@ -43,4 +49,18 @@ header {
   font-weight: 400;
   font-size: 1rem;
   position: relative;
+}
+
+.nav-button {
+  background: #8e2de2;
+  background: linear-gradient(
+    90deg,
+    rgba(142, 45, 226, 1) 0%,
+    rgba(74, 0, 224, 1) 100%
+  );
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
 }
