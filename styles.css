@@ -33,16 +33,27 @@ header {
 .nav-logo {
   font-size: 1.25rem;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: row;
   gap: 0.5rem;
   padding: 0.5rem;
   border: none;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #0e0b16;
   border-radius: 1000px;
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 }
 
 .nav-logo:after {
@@ -53,15 +64,25 @@ header {
   width: 103%;
   border-radius: 1000px;
   background-image: linear-gradient(
-    90deg,
+    45deg,
+    rgba(142, 45, 226, 1),
+    rgba(74, 0, 224, 1),
     rgba(142, 45, 226, 1),
     rgba(74, 0, 224, 1)
   );
+  background-size: 300% 300%;
+  animation: gradientShift 4s ease infinite;
   z-index: -1;
 }
 
 .nav-logo h1 {
   font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .nav-links ul {
@@ -77,35 +98,135 @@ header {
   font-size: 1rem;
   position: relative;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .nav-links li:hover {
   background: linear-gradient(
-    90deg,
-    rgba(142, 45, 226, 1) 0%,
-    rgba(74, 0, 224, 1) 100%
+    45deg,
+    rgba(142, 45, 226, 1),
+    rgba(74, 0, 224, 1),
+    rgba(142, 45, 226, 1)
   );
+  background-size: 200% 200%;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  animation: gradientShift 2s ease infinite;
 }
 
 .nav-button {
-  background: #8e2de2;
   background: linear-gradient(
     90deg,
     rgba(142, 45, 226, 1) 0%,
     rgba(74, 0, 224, 1) 100%
   );
   color: white;
-  border-radius: 10px;
-  border: none;
+  border-radius: 1000px;
+  border: 2px solid transparent;
   padding: 1rem;
   font-size: 1rem;
   transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  font-family: inherit;
+  position: relative; /* Add this */
 }
 
 .nav-button:hover {
-  box-shadow: 0 0 10px rgba(142, 45, 226, 0.6), 0 0 20px rgba(142, 45, 226, 0.4),
-    0 0 30px rgba(142, 45, 226, 0.2);
+  box-shadow: 0 0 5px rgba(142, 45, 226, 1), 0 0 15px rgba(142, 45, 226, 0.8),
+    0 0 25px rgba(142, 45, 226, 0.6), 0 0 35px rgba(142, 45, 226, 0.4);
+}
+
+.nav-button:hover::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(142, 45, 226, 1) 0deg,
+    rgba(74, 0, 224, 1) 60deg,
+    rgba(142, 45, 226, 1) 120deg,
+    rgba(74, 0, 224, 1) 180deg,
+    rgba(142, 45, 226, 1) 240deg,
+    rgba(74, 0, 224, 1) 300deg,
+    rgba(142, 45, 226, 1) 360deg
+  );
+  border-radius: 1000px;
+  z-index: -1;
+  animation: gradientRotate 2s linear infinite;
+}
+
+/* New keyframe that changes the gradient starting point */
+@keyframes gradientRotate {
+  0% {
+    background: conic-gradient(
+      from 0deg,
+      rgba(142, 45, 226, 1) 0deg,
+      rgba(74, 0, 224, 1) 60deg,
+      rgba(142, 45, 226, 1) 120deg,
+      rgba(74, 0, 224, 1) 180deg,
+      rgba(142, 45, 226, 1) 240deg,
+      rgba(74, 0, 224, 1) 300deg,
+      rgba(142, 45, 226, 1) 360deg
+    );
+  }
+  100% {
+    background: conic-gradient(
+      from 360deg,
+      rgba(142, 45, 226, 1) 0deg,
+      rgba(74, 0, 224, 1) 60deg,
+      rgba(142, 45, 226, 1) 120deg,
+      rgba(74, 0, 224, 1) 180deg,
+      rgba(142, 45, 226, 1) 240deg,
+      rgba(74, 0, 224, 1) 300deg,
+      rgba(142, 45, 226, 1) 360deg
+    );
+  }
+}
+
+.hamburger {
+  display: none; /* Hidden on desktop for now */
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #fcfcfc;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+.nav-links.active {
+  display: block; /* Show when active class is added */
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex; /* Show hamburger on mobile */
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%; /* Start below the navbar */
+    left: 0;
+    width: 100%;
+    background-color: #0e0b16; /* Match your background */
+    display: none; /* Hidden by default */
+  }
+
+  .nav-links ul {
+    flex-direction: column; /* Stack vertically */
+    gap: 1rem;
+    padding: 2rem;
+  }
+
+  .nav-button {
+    display: none; /* Hide button on mobile */
+  }
 }
