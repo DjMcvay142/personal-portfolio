@@ -205,6 +205,80 @@ header {
   display: block; /* Show when active class is added */
 }
 
+.hero-section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-section h1 {
+  font-weight: 600;
+  font-size: 5rem;
+}
+
+.hero-section h2 {
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  padding: 1rem;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-button {
+  background: linear-gradient(
+    90deg,
+    rgba(142, 45, 226, 1) 0%,
+    rgba(74, 0, 224, 1) 100%
+  );
+  color: white;
+  border-radius: 1000px;
+  border: 2px solid transparent;
+  padding: 1rem;
+  margin: 1rem;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  font-family: inherit;
+  position: relative;
+}
+
+.hero-button:hover {
+  box-shadow: 0 0 5px rgba(142, 45, 226, 1), 0 0 15px rgba(142, 45, 226, 0.8),
+    0 0 25px rgba(142, 45, 226, 0.6), 0 0 35px rgba(142, 45, 226, 0.4);
+}
+
+.hero-button:hover::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(142, 45, 226, 1) 0deg,
+    rgba(74, 0, 224, 1) 60deg,
+    rgba(142, 45, 226, 1) 120deg,
+    rgba(74, 0, 224, 1) 180deg,
+    rgba(142, 45, 226, 1) 240deg,
+    rgba(74, 0, 224, 1) 300deg,
+    rgba(142, 45, 226, 1) 360deg
+  );
+  border-radius: 1000px;
+  z-index: -1;
+  animation: gradientRotate 2s linear infinite;
+}
+
+.hero-link {
+  font-size: 2rem;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
   .hamburger {
