@@ -1,3 +1,15 @@
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -42,18 +54,6 @@ header {
   position: relative;
   background-color: #0e0b16;
   border-radius: 1000px;
-
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
 }
 
 .nav-logo:after {
@@ -117,10 +117,14 @@ header {
 
 .nav-button {
   background: linear-gradient(
-    90deg,
-    rgba(142, 45, 226, 1) 0%,
-    rgba(74, 0, 224, 1) 100%
+    45deg,
+    rgba(142, 45, 226, 1),
+    rgba(74, 0, 224, 1),
+    rgba(142, 45, 226, 1),
+    rgba(74, 0, 224, 1)
   );
+  background-size: 300% 300%;
+  animation: gradientShift 4s ease infinite;
   color: white;
   border-radius: 1000px;
   border: 2px solid transparent;
@@ -129,7 +133,7 @@ header {
   transition: box-shadow 0.3s ease;
   cursor: pointer;
   font-family: inherit;
-  position: relative; /* Add this */
+  position: relative;
 }
 
 .nav-button:hover {
@@ -235,10 +239,14 @@ header {
 
 .hero-button {
   background: linear-gradient(
-    90deg,
-    rgba(142, 45, 226, 1) 0%,
-    rgba(74, 0, 224, 1) 100%
+    45deg,
+    rgba(142, 45, 226, 1),
+    rgba(74, 0, 224, 1),
+    rgba(142, 45, 226, 1),
+    rgba(74, 0, 224, 1)
   );
+  background-size: 300% 300%;
+  animation: gradientShift 4s ease infinite;
   color: white;
   border-radius: 1000px;
   border: 2px solid transparent;
@@ -277,6 +285,20 @@ header {
 
 .hero-link {
   font-size: 2rem;
+}
+
+span {
+  background: linear-gradient(
+    45deg,
+    rgba(142, 45, 226, 1),
+    rgba(74, 0, 224, 1),
+    rgba(142, 45, 226, 1)
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientShift 2s ease infinite;
 }
 
 /* Mobile styles */
